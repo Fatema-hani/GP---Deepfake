@@ -1,0 +1,10 @@
+import moviepy.editor as mp
+video = mp.VideoFileClip('/content/output.mp4')
+logo = (mp.ImageClip('/content/MaskLogo.png')
+  .set_duration(video.duration)
+  .resize(height = 30 )
+  .margin(right=10, top=200, opacity=0)
+  .set_pos('right', 'top')
+)
+final = mp.CompositeVideoClip([video,logo])
+final.subclip(0).write_videofile('video-logo.MP4')
